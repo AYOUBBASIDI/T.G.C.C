@@ -23,6 +23,8 @@ function createWindow () {
             clearCache: true
         }
     })
+
+    mainWindow.maximize();
     
     mainWindow.loadURL(url.format({
         pathname: path.join(__dirname, '/dist/tgcc/index.html'),

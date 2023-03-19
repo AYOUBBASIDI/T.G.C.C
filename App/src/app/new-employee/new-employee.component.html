@@ -1,123 +1,10 @@
 <style>
-/* 
-.form-field {
-  display: block;
-  width: 100%;
-  padding: 8px 16px;
-  line-height: 25px;
-  font-size: 14px;
-  font-weight: 500;
-  font-family: inherit;
-  border-radius: 6px;
-  -webkit-appearance: none;
-  color: #99A3BA;
-  border: 1px solid #CDD9ED;
-  background: #fff;
-  transition: border 0.3s ease;
-}
-.form-field::-moz-placeholder {
-  color: var(--input-placeholder);
-}
-.form-field:-ms-input-placeholder {
-  color: var(--input-placeholder);
-}
-.form-field::placeholder {
-  color: var(--input-placeholder);
-}
-.form-field:focus {
-  outline: none;
-  border-color: var(--input-border-focus);
-}
-
-.form-group {
-  position: relative;
-  display: flex;
-  width: 46%;
-}
-.form-group > label,
-.form-group .form-field {
-  white-space: nowrap;
-  display: block;
-}
-.form-group > label:not(:first-child):not(:last-child),
-.form-group .form-field:not(:first-child):not(:last-child) {
-  border-radius: 0;
-}
-.form-group > label:first-child,
-.form-group .form-field:first-child {
-  border-radius: 6px 0 0 6px;
-}
-.form-group > label:last-child,
-.form-group .form-field:last-child {
-  border-radius: 0 6px 6px 0;
-}
-.form-group > label:not(:first-child),
-.form-group .form-field:not(:first-child) {
-  margin-left: -1px;
-}
-.form-group .form-field {
-  position: relative;
-  z-index: 1;
-  flex: 1 1 auto;
-  width: 1%;
-  margin-top: 0;
-  margin-bottom: 0;
-}
-.form-group > label {
-  text-align: center;
-  padding: 8px 12px;
-  font-size: 14px;
-  line-height: 25px;
-  color: #99A3BA;
-  background: #EEF4FF;
-  border: 1px solid #CDD9ED;
-  transition: background 0.3s ease, border 0.3s ease, color 0.3s ease;
-}
-.form-group:focus-within > label {
-  color: #fff;
-  background: #678EFE;
-  border-color: #275EFE;
-}
-
-html {
-  box-sizing: border-box;
-  -webkit-font-smoothing: antialiased;
-}
-
-* {
-  box-sizing: inherit;
-}
-*:before, *:after {
-  box-sizing: inherit;
-}
-
-body {
-  min-height: 100vh;
-  font-family: "Mukta Malar", Arial;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background: #F5F9FF;
-}
-body .form-group {
-  max-width: 360px;
-}
-body .form-group:not(:last-child) {
-  margin-bottom: 32px;
-}
-
- */
-
 form{
     display: flex;
     row-gap: 2rem;
     column-gap: 6rem;
     flex-wrap: wrap;
 }
-
-
-
 
 .form-field {
   display: block;
@@ -151,7 +38,7 @@ form{
 .form-group {
   position: relative;
   display: flex;
-  width: 46%;
+  width: 45%;
 }
 .form-group > label,
 .form-group .form-field {
@@ -226,6 +113,7 @@ body .form-group:not(:last-child) {
     padding: 0% 5%;
     width: 36%;
     cursor: pointer;
+    height: 40px;
 }
 .create:hover{
     background-color: var(--group-background-focus);
@@ -235,7 +123,7 @@ body .form-group:not(:last-child) {
 
 .title{
     color: var(--group-color);
-    font-size: 25px;
+    font-size: 23px;
     line-height: 25px;
     margin: 0;
     padding: 0;
@@ -243,7 +131,7 @@ body .form-group:not(:last-child) {
 
 .description{
     color: var(--group-color);
-    font-size: 17px;
+    font-size: 15px;
     line-height: 25px;
     margin: 0;
     padding: 0;
@@ -265,47 +153,43 @@ body .form-group:not(:last-child) {
 <div class="create-carte">
     <h2 class="title">Create New Employee</h2>
     <p class="description">Fill this form to create new employee <span>( All fields is required )</span></p>
-    <form>
+    <form (ngSubmit)="onSubmit(form.value)" #form="ngForm">
         <div class="form-group">
             <label for="firstName">First Name</label>
-            <input class="form-field" type="text" id="firstName" name="firstName" />
+            <input class="form-field" type="text" id="firstName" name="fname" ngModel required/>
         </div>
         <div class="form-group">
             <label for="lastName">Last Name</label>
-            <input class="form-field" type="text" id="lastName" name="lastName" />
+            <input class="form-field" type="text" id="lastName" name="lname" ngModel required/>
         </div>
         <div class="form-group">
             <label for="email">Email</label>
-            <input class="form-field" type="text" id="email" name="email" />
+            <input class="form-field" type="text" id="email" name="email" ngModel required/>
             <label for="email">@gmail.com</label>
         </div>
         <div class="form-group">
             <label for="phone">Phone</label>
-            <input class="form-field" type="text" id="phone" name="phone" />
+            <input class="form-field" type="text" id="phone" name="phone" ngModel required/>
         </div>
         <div class="form-group">
             <label for="address">Address</label>
-            <input class="form-field" type="text" id="address" name="address" />
+            <input class="form-field" type="text" id="address" name="address" ngModel required/>
         </div>
         <div class="form-group">
             <label for="city">City</label>
-            <input class="form-field" type="text" id="city" name="city" />
-        </div>
-        <div class="form-group">
-            <label for="state">State</label>
-            <input class="form-field" type="text" id="state" name="state" />
+            <input class="form-field" type="text" id="city" name="city" ngModel required/>
         </div>
         <div class="form-group">
             <label for="zip">Zip</label>
-            <input class="form-field" type="text" id="zip" name="zip" />
+            <input class="form-field" type="text" id="zip" name="zip" ngModel required/>
         </div>
         <div class="form-group">
             <label for="country">Country</label>
-            <input class="form-field" type="text" id="country" name="country" />
+            <input class="form-field" type="text" id="country" name="country" ngModel required/>
         </div>
         <div class="form-group">
             <label for="department">Department</label>
-            <select id="department" name="department" class="form-field">
+            <select id="department" name="departement" class="form-field" ngModel>
                 <option value="IT">IT</option>
                 <option value="HR">HR</option>
                 <option value="Sales">Sales</option>
@@ -320,7 +204,7 @@ body .form-group:not(:last-child) {
         </div>
         <div class="form-group">
             <label for="jobTitle">Job Title</label>
-            <select id="jobTitle" name="jobTitle" class="form-field">
+            <select id="jobTitle" name="job" class="form-field" ngModel>
                 <option value="IT Manager">IT Manager</option>
                 <option value="IT Support">IT Support</option>
                 <option value="IT Specialist">IT Specialist</option>
@@ -362,19 +246,19 @@ body .form-group:not(:last-child) {
         </div>
         <div class="form-group">
             <label for="salary">Salary</label>
-            <input class="form-field" type="text" id="salary" name="salary" />
+            <input class="form-field" type="text" id="salary" name="salary" ngModel required/>
         </div>
         <div class="form-group">
             <label for="hireDate">Hire Date</label>
-            <input class="form-field" type="date" id="hireDate" name="hireDate" />
+            <input class="form-field" type="date" id="hireDate" name="start" ngModel required/>
         </div>
         <div class="form-group">
             <label for="terminationDate">Termination Date</label>
-            <input class="form-field" type="date" id="terminationDate" name="terminationDate" />
+            <input class="form-field" type="date" id="terminationDate" name="termination" ngModel required/>
         </div>
         <div class="form-group">
             <label for="status">Etat Familliale</label>
-            <select id="status" name="status" class="form-field">
+            <select id="status" name="etat" class="form-field" ngModel>
                 <option value="Célibataire">Célibataire</option>
                 <option value="Marié">Marié</option>
                 <option value="Divorcé">Divorcé</option>
@@ -383,14 +267,14 @@ body .form-group:not(:last-child) {
         </div>
         <div class="form-group">
             <label for="manager">Manager</label>
-            <select id="manager" name="manager" class="form-field"> 
+            <select id="manager" name="manager" class="form-field" ngModel> 
                 <option value="Monsieur Ayoub Basidi">Monsieur Ayoub Basidi</option>
                 <option value="Monsieur Mohamed Elhaj">Monsieur Mohamed Elhaj</option>
             </select>
         </div>
         <div class="form-group">
             <label for="Matricule">Matricule</label>
-            <input class="form-field" type="text" id="Matricule" name="Matricule" />
+            <input class="form-field" type="text" id="Matricule" name="matricule" ngModel required/>
         </div>
         <button type="submit" class="btn btn-primary create">Create Employee</button>
     </form>
